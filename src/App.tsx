@@ -1,25 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Box, Typography} from "@mui/material";
+import NewMetricsSelector, {targets} from "./Selectors/Metrics/Metrics";
 
 function App() {
+    const [metrics, setMetrics] = useState([] as string[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className="App" sx={{width:'100%', height:'100%'}}>
+      <NewMetricsSelector value={metrics} updateContext={false} updateValue={setMetrics} target={targets.competitive}/>
+        <Typography>Metrics</Typography>
+        <Typography>{metrics.toString()}</Typography>
+    </Box>
   );
 }
 
